@@ -235,12 +235,13 @@ if (chat_localized) {
 		    
 		    $(window).resize(function () {
 			if (!$('#chat-block-site').hasClass('closed')) {
-				var windowWidth, boxWidth, paddingWidth; // declare variables in this scope
+				var boxWidth;
+				var boxHeight;
 				
-				windowWidth = $(window).width(); // set variables in this scope
-			    boxWidth = windowWidth*.19;
+			    boxWidth = $(window).width()/5;
+			    boxHeight = $(window).width()/5;
 
-				$('#chat-block-site').resize(boxWidth);	
+				$('#chat-block-site').width(boxWidth);	
 							
 			    /*if ($('#chat-box-1').height() > $(window).height()) {
 				$('#chat-block-inner').height($(window).height()-50);
