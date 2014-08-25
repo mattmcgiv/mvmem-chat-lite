@@ -2099,7 +2099,7 @@ if ( ! class_exists( 'Chat' ) ) {
 					$content .= '<div id="chat-log-wrap-' . $a['id'] . '" class="chat-log-wrap" style="background-color: ' . $a['background_color'] . '; ' . $font_style . '"><div id="chat-log-area-' . $a['id'] . '" class="chat-log-area"><ul>' . $date_content . '</ul></div></div>';
 				}
 			}
-			$content .= '<div class="chat-clear"></div></div>';
+			$content .= '<div class="chat-clear">Click here to clear the chat window.</div></div>';
 
 			wp_localize_script( 'chat_js', 'chat_localized', $chat_localized );
 
