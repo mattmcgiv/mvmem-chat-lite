@@ -297,6 +297,9 @@ if (chat_localized) {
 		    });
 		      
 		    $('.chat-clear').click(function(e) {
+		    
+		    cid = $(this).closest('form').find('.chat-post-id').val();
+			chat.send(cid, " cleared the chat window.", chat_localized['name_'+cid], vip, chat_localized['sound_'+cid], chat_localized['type_'+cid]);
 		    		    
 			chat.clear($(this).closest('form').find('.chat-post-id').val());
 		        $(this).attr("disabled", "disabled");
