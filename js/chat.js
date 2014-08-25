@@ -238,30 +238,30 @@ if (chat_localized) {
 				var boxWidth;
 				var boxHeight;
 				
-			    boxWidth = $(window).width()/5;
-			    boxHeight = $(window).width()/5;
-
+			    boxWidth = $('body').width();
+			    console.log(boxWidth);
+				boxWidth *= .195;
 				$('#chat-block-site').width(boxWidth);	
 							
-			    /*if ($('#chat-box-1').height() > $(window).height()) {
+			    if ($('#chat-box-1').height() > $(window).height()) {
 				$('#chat-block-inner').height($(window).height()-50);
 				if ($('#chat-block-site').hasClass('free-width')) {
 				    width = Math.max(425, $('#chat-box-1').width());
 				} else {
 				    width = $('#chat-box-1').width();
 				}
-				$('#chat-block-site').width(width+15);
+				//$('#chat-block-site').width(width+15);
 			    }
 		    
 			    if ($(window).height() > $('#chat-box-1').height()) {
 				$('#chat-block-inner').height($('#chat-box-1').height()+5);
 				if ($('#chat-block-site').hasClass('free-width')) {
-				    width = Math.max(425, $('#chat-box-1').width());
+				    //width = Math.max(425, $('#chat-box-1').width());
 				} else {
-				    width = $('#chat-box-1').width();
+				    //width = $('#chat-box-1').width();
 				}
-				$('#chat-block-site').width(width);
-			    }*/
+				//$('#chat-block-site').width(width);
+			    }
 			}
 			$('.chat-send').each(function () {
 			    $(this).width($(this).closest('.chat-send-wrap').width()-12);
