@@ -297,10 +297,18 @@ if (chat_localized) {
 		    });
 		      
 		    $('.chat-clear').click(function(e) {
+		    		    
 			chat.clear($(this).closest('form').find('.chat-post-id').val());
 		        $(this).attr("disabled", "disabled");
-		        $(this).val(chat_localized.please_wait);
+		        $(this).val(chat_localized.please_wait);		        
 		    });
+		    
+		    $('#ring-users').click(function(e) {
+		    	pingSound.play('notify').delay(2000);
+		    	this.delay(2000);
+		    });
+			
+			
 			
 		    $('.chat-archive').click(function(e) {
 			chat.archive($(this).closest('form').find('.chat-post-id').val());

@@ -2008,9 +2008,10 @@ if ( ! class_exists( 'Chat' ) ) {
 			if ( $chat_localized[ 'type_' . $a['id'] ] ) {
 				$chat_localized[ 'name_' . $a['id'] ] = $this->get_user_name( preg_split( '/,/', $a['login_options'] ) );
 				
-				$content .= '<div class="chat-note"><strong>';
+				$content .= '<div class="chat-note" id="online-users"><strong>';
 				$content .= 'Online ' . get_users_browsing_site();
 				$content .= '</strong></div>';
+				$content .= '<div class="chat-note" id="ring-users"><a style="text-decoration: underline; color: blue;"> Click here to ring users.</a></div>';
 				$content .= '<br>';
 				$content .= '<div class="chat-note"><p><strong>' . __( 'Message', $this->translation_domain ) . '</strong></p></div>';
 				$content .= '<form id="send-message-area">';
@@ -2018,13 +2019,13 @@ if ( ! class_exists( 'Chat' ) ) {
 
 				$content .= '<div class="chat-tool-bar-wrap"><div class="chat-note">';
 
-				if ( $a['emoticons'] == 'enabled' ) {
+				/*if ( $a['emoticons'] == 'enabled' ) {
 					$content .= '<div id="chat-emoticons-list-' . $a['id'] . '" class="chat-emoticons-list chat-tool-bar">';
 					foreach ( $smilies_list as $smilie ) {
 						$content .= convert_smilies( $smilie );
 					}
 					$content .= '</div>';
-				}
+				}*/
 
 				//$content .= '<div class="chat-clear"><a style="text-decoration: underline;">Click here to clear chat box.</a></div></div></div>';
 
@@ -2038,7 +2039,7 @@ if ( ! class_exists( 'Chat' ) ) {
 				$content .= '</div>';
 				$content .= '<div class="chat-tool-bar-wrap"><div class="chat-note">';
 
-				$content .= '<div class="chat-clear"><a style="text-decoration: underline;">Click here to clear chat box.</a></div></div></div>';
+				$content .= '<div class="chat-clear"><a style="text-decoration: underline; color: blue;">Click here to clear chat box.</a></div></div></div>';
 				$content .= '</form>';
 			} else {
 				if ( preg_match( '/public_user|twitter|facebook/', $a['login_options'] ) > 0 ) {
@@ -2102,7 +2103,7 @@ if ( ! class_exists( 'Chat' ) ) {
 					$content .= '<div id="chat-log-wrap-' . $a['id'] . '" class="chat-log-wrap" style="background-color: ' . $a['background_color'] . '; ' . $font_style . '"><div id="chat-log-area-' . $a['id'] . '" class="chat-log-area"><ul>' . $date_content . '</ul></div></div>';
 				}
 			}
-			$content .= '<div class="chat-clear"></div></div>';
+			//$content .= '<div class="chat-clear">Click here to clear the chat window.</div></div>';
 
 			wp_localize_script( 'chat_js', 'chat_localized', $chat_localized );
 
