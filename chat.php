@@ -801,7 +801,7 @@ if ( ! class_exists( 'Chat' ) ) {
 						<tr>
 							<td><label for="chat_log_creation">{#chat_dlg.creation}</label></td>
 							<td>
-								<select id="chat_log_creation" name="chat_log_creation" disabled="disabled">
+								<select id="chat_log_creation" name="chat_log_creation">
 									<option value="enabled" <?php print ( $this->get_option( 'log_creation', 'disabled' ) == 'enabled' ) ? 'selected="selected"' : ''; ?>>
 										{#chat_dlg.enabled}
 									</option>
@@ -2023,7 +2023,7 @@ if ( ! class_exists( 'Chat' ) ) {
 					$content .= '</div>';
 				}
 
-				$content .= '<div class="chat-clear"></div></div></div>';
+				//$content .= '<div class="chat-clear"><a style="text-decoration: underline;">Click here to clear chat box.</a></div></div></div>';
 
 				$content .= '<div id="chat-send-wrap">';
 				$content .= '<div class="chat-clear"></div>';
@@ -2035,7 +2035,7 @@ if ( ! class_exists( 'Chat' ) ) {
 				$content .= '</div>';
 				$content .= '<div class="chat-tool-bar-wrap"><div class="chat-note">';
 
-				$content .= '<div class="chat-clear"></div></div></div>';
+				$content .= '<div class="chat-clear"><a style="text-decoration: underline;">Click here to clear chat box.</a></div></div></div>';
 				$content .= '</form>';
 			} else {
 				if ( preg_match( '/public_user|twitter|facebook/', $a['login_options'] ) > 0 ) {
