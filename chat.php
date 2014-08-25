@@ -5,7 +5,6 @@ Plugin URI: http://antym.com
 Description: Provides you with a fully featured chat area either in a post, page or bottom corner of your site - once activated configure <a href="options-general.php?page=chat">here</a> and drop into a post or page by clicking on the new chat icon in your post/page editor.
 Author: Matt McGivney (forked from WPMU DEV's Chat Lite)
 Version: 0.1
-Stable tag: trunk
 Author URI: http://antym.com
 */
 /**
@@ -2008,7 +2007,11 @@ if ( ! class_exists( 'Chat' ) ) {
 			$chat_localized[ 'type_' . $a['id'] ] = $this->authenticate( preg_split( '/,/', $a['login_options'] ) );
 			if ( $chat_localized[ 'type_' . $a['id'] ] ) {
 				$chat_localized[ 'name_' . $a['id'] ] = $this->get_user_name( preg_split( '/,/', $a['login_options'] ) );
-
+				
+				$content .= '<div class="chat-note"><strong>';
+				$content .= 'Online ' . get_users_browsing_site();
+				$content .= '</strong></div>';
+				$content .= '<br>';
 				$content .= '<div class="chat-note"><p><strong>' . __( 'Message', $this->translation_domain ) . '</strong></p></div>';
 				$content .= '<form id="send-message-area">';
 				$content .= '<input type="hidden" name="chat-post-id" id="chat-post-id-' . $a['id'] . '" value="' . $a['id'] . '" class="chat-post-id" />';
@@ -2022,15 +2025,13 @@ if ( ! class_exists( 'Chat' ) ) {
 					}
 					$content .= '</div>';
 				}
-				
-				$content .= 'Online ' . get_users_browsing_site();
 
 				//$content .= '<div class="chat-clear"><a style="text-decoration: underline;">Click here to clear chat box.</a></div></div></div>';
 
 				$content .= '<div id="chat-send-wrap">';
 				$content .= '<div class="chat-clear"></div>';
 				$content .= '<div class="chat-send-wrap"><textarea id="chat-send-' . $a['id'] . '" class="chat-send"></textarea></div>';
-				$content .= '<div class="chat-note">' . __( '"Enter" to send', $this->translation_domain ) . '. ' . __( 'Place code in between code tags', $this->translation_domain ) . '.</div>';
+				//$content .= '<div class="chat-note">' . __( '"Enter" to send', $this->translation_domain ) . '. ' . __( 'Place code in between code tags', $this->translation_domain ) . '.</div>';
 				if ( $this->authenticate( preg_split( '/,/', $a['login_options'] ) ) > 2 ) {
 					$content .= '<div class="chat-note"><input type="button" value="' . __( 'Logout', $this->translation_domain ) . '" name="chat-logout-submit" class="chat-logout-submit" id="chat-logout-submit-' . $a['id'] . '" /></div>';
 				}
