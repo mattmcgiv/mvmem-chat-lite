@@ -303,10 +303,15 @@ if (chat_localized) {
 		        $(this).val(chat_localized.please_wait);		        
 		    });
 		    
-		    $('#ring-users').click(function(e) {
-		    	pingSound.play('notify').delay(2000);
-		    	this.delay(2000);
-		    });
+		    /*$('#ring-users').click(function(e) {
+		    	
+		    	
+		    	//pingSound.play('notify').delay(2000);
+		    	//this.delay(2000);
+		    	
+		    });*/
+		    
+		    
 			
 			
 			
@@ -508,5 +513,20 @@ if(enc!==null){if(end>start){utftext+=string.substring(start,end);}
 utftext+=enc;start=end=n+1;}}
 if(end>start){utftext+=string.substring(start,string.length);}
 return utftext;}
+
+function ringUsers() {
+		    	console.log("clicked ring");
+			    var text = jQuery('#chat-send-1').val();
+			    var maxLength = 2000;
+			    var length = text.length;
+			    
+			    if (length <= maxLength + 1) {
+				cid = jQuery('#chat-send-1').closest('form').find('.chat-post-id').val();
+			    chat.send(cid, " is ringing!", chat_localized['name_'+cid], vip, chat_localized['sound_'+cid], chat_localized['type_'+cid]);
+				jQuery('#chat-send-1').val("");
+			    } else {
+			        jQuery('#chat-send-1').val(text.substring(0, maxLength));
+			    }
+		    }
 
 // php.js end

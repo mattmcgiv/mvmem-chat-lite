@@ -2008,7 +2008,7 @@ if ( ! class_exists( 'Chat' ) ) {
 			if ( $chat_localized[ 'type_' . $a['id'] ] ) {
 				$chat_localized[ 'name_' . $a['id'] ] = $this->get_user_name( preg_split( '/,/', $a['login_options'] ) );
 				
-				$content .= '<div class="chat-note"><a id="ring-users" href="javascript:void(0)" onclick="updateChat(null);" style="text-decoration: underline; color: blue;"> Click here to ring users.</a></div>';
+				$content .= '<div class="chat-note"><a id="ring-users" href="javascript:void(0)" onclick="ringUsers();" style="text-decoration: underline; color: blue;"> Click here to ring users.</a></div>';
 				$content .= '<div class="chat-note" id="online-users"><strong>';
 				$content .= 'Online ' . get_users_browsing_site();
 				$content .= '</strong></div>';
@@ -2037,10 +2037,10 @@ if ( ! class_exists( 'Chat' ) ) {
 					$content .= '<div class="chat-note"><input type="button" value="' . __( 'Logout', $this->translation_domain ) . '" name="chat-logout-submit" class="chat-logout-submit" id="chat-logout-submit-' . $a['id'] . '" /></div>';
 				}
 				$content .= '</div>';
-				$content .= '<div class="chat-tool-bar-wrap"><div class="chat-note">';
+				$content .= '<div class="chat-tool-bar-wrap"><div class="chat-note" id="with-button">';
 
 				//$content .= '<div class="chat-clear"><a href="" style="text-decoration: underline; color: blue;">Click here to clear chat box.</a></div></div></div>';
-				$content .= '<button type="button" class="chat-clear">Clear</button>';
+				$content .= '<button type="button" class="chat-clear" style="margin: 0 auto !important;">Clear Chat</button>';
 				
 				$content .= '</form>';
 			} else {

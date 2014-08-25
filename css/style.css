@@ -6,7 +6,7 @@
 
 div.chat-box {
 	overflow: auto !important;
-	text-align: left !important;
+	text-align: left;
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
@@ -124,6 +124,10 @@ div.chat-clear {
 }
 div.chat-note {
 	margin: 2px 5px;
+}
+
+div.chat-note #with-button {
+	text-align: center;
 }
 #chat-block-site {
 	padding: 2px 3px 0 3px !important;
