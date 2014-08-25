@@ -2022,6 +2022,8 @@ if ( ! class_exists( 'Chat' ) ) {
 					}
 					$content .= '</div>';
 				}
+				
+				$content .= 'Online ' . get_users_browsing_site();
 
 				//$content .= '<div class="chat-clear"><a style="text-decoration: underline;">Click here to clear chat box.</a></div></div></div>';
 
