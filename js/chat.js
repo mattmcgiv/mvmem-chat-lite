@@ -235,7 +235,14 @@ if (chat_localized) {
 		    
 		    $(window).resize(function () {
 			if (!$('#chat-block-site').hasClass('closed')) {
-			    if ($('#chat-box-1').height() > $(window).height()) {
+				var windowWidth, boxWidth, paddingWidth; // declare variables in this scope
+				
+				windowWidth = $(window).width(); // set variables in this scope
+			    boxWidth = windowWidth*.19;
+
+				$('#chat-block-site').resize(boxWidth);	
+							
+			    /*if ($('#chat-box-1').height() > $(window).height()) {
 				$('#chat-block-inner').height($(window).height()-50);
 				if ($('#chat-block-site').hasClass('free-width')) {
 				    width = Math.max(425, $('#chat-box-1').width());
@@ -253,7 +260,7 @@ if (chat_localized) {
 				    width = $('#chat-box-1').width();
 				}
 				$('#chat-block-site').width(width);
-			    }
+			    }*/
 			}
 			$('.chat-send').each(function () {
 			    $(this).width($(this).closest('.chat-send-wrap').width()-12);
