@@ -2008,10 +2008,10 @@ if ( ! class_exists( 'Chat' ) ) {
 			if ( $chat_localized[ 'type_' . $a['id'] ] ) {
 				$chat_localized[ 'name_' . $a['id'] ] = $this->get_user_name( preg_split( '/,/', $a['login_options'] ) );
 				
+				$content .= '<div class="chat-note"><a id="ring-users" href="javascript:void(0)" onclick="updateChat(null);" style="text-decoration: underline; color: blue;"> Click here to ring users.</a></div>';
 				$content .= '<div class="chat-note" id="online-users"><strong>';
 				$content .= 'Online ' . get_users_browsing_site();
 				$content .= '</strong></div>';
-				$content .= '<div class="chat-note" id="ring-users"><a style="text-decoration: underline; color: blue;"> Click here to ring users.</a></div>';
 				$content .= '<br>';
 				$content .= '<div class="chat-note"><p><strong>' . __( 'Message', $this->translation_domain ) . '</strong></p></div>';
 				$content .= '<form id="send-message-area">';
@@ -2039,7 +2039,9 @@ if ( ! class_exists( 'Chat' ) ) {
 				$content .= '</div>';
 				$content .= '<div class="chat-tool-bar-wrap"><div class="chat-note">';
 
-				$content .= '<div class="chat-clear"><a style="text-decoration: underline; color: blue;">Click here to clear chat box.</a></div></div></div>';
+				//$content .= '<div class="chat-clear"><a href="" style="text-decoration: underline; color: blue;">Click here to clear chat box.</a></div></div></div>';
+				$content .= '<button type="button" class="chat-clear">Clear</button>';
+				
 				$content .= '</form>';
 			} else {
 				if ( preg_match( '/public_user|twitter|facebook/', $a['login_options'] ) > 0 ) {

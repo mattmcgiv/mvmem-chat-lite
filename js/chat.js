@@ -1,5 +1,5 @@
 /**
- * Chat plugin javascript
+ * Chat plugin script
  * 
  * @todo	Make this more OO when we have time
  * 
