@@ -1892,7 +1892,7 @@ if ( ! class_exists( 'Chat' ) ) {
 					$width_style = ' free-width';
 					$width_str   = '';
 				}
-				echo '<div id="chat-block-site" class="chat-block-site closed' . $width_style . '" style="' . $width_str . '; background-color: ' . $this->get_option( 'border_color', '#4b96e2', 'site' ) . ';">';
+				echo '<div id="chat-block-site" class="chat-block-site open' . $width_style . '" style="' . $width_str . '; background-color: ' . $this->get_option( 'border_color', '#4b96e2', 'site' ) . ';">';
 				echo '<div id="chat-block-header" class="chat-block-header"><span class="chat-title-text">' . __( 'Chat', $this->translation_domain ) . '</span><span class="chat-prompt-text">' . __( 'Click here to chat!', $this->translation_domain ) . '</span>';
 				echo '<img src="' . plugins_url( 'chat/images/16-square-green-add.png' ) . '" alt="+" width="16" height="16" title="' . __( 'Maximize', $this->translation_domain ) . '" class="chat-toggle-button" id="chat-toggle-button" />';
 				echo '</div>';
