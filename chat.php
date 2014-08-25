@@ -2031,7 +2031,7 @@ if ( ! class_exists( 'Chat' ) ) {
 
 				$content .= '<div id="chat-send-wrap">';
 				$content .= '<div class="chat-clear"></div>';
-				$content .= '<div class="chat-send-wrap"><textarea id="chat-send-' . $a['id'] . '" class="chat-send"></textarea></div>';
+				$content .= '<div class="chat-send-wrap"><textarea id="chat-send-' . $a['id'] . '" class="chat-send" placeholder="Type here. Press Enter to send."></textarea></div>';
 				//$content .= '<div class="chat-note">' . __( '"Enter" to send', $this->translation_domain ) . '. ' . __( 'Place code in between code tags', $this->translation_domain ) . '.</div>';
 				if ( $this->authenticate( preg_split( '/,/', $a['login_options'] ) ) > 2 ) {
 					$content .= '<div class="chat-note"><input type="button" value="' . __( 'Logout', $this->translation_domain ) . '" name="chat-logout-submit" class="chat-logout-submit" id="chat-logout-submit-' . $a['id'] . '" /></div>';
