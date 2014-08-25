@@ -37,7 +37,7 @@ if (chat_localized) {
 	this.archive = archiveChat;
     }
     
-    function updateChat(sounds){
+    function updateChat(sounds, ring){
 	if(!instanse){
 	    jQuery('.chat-post-id').each(function () {
 		var instanse = true;
@@ -103,7 +103,13 @@ if (chat_localized) {
 					    //jQuery('#chat-area-'+pid).animate({ scrollTop: jQuery('#chat-area-'+pid).attr("scrollHeight") }, 2000);
 					
 					    if ( sounds !== 'disabled' && chat_localized['sound_'+pid] !== 'disabled' && pingSound ) {
-						pingSound.play('notify');
+						
+							if (ring) {
+								ringSound.play('notify');
+							}
+							else {
+								pingSound.play('notify');
+							}
 					    }
 					}
 				    }
@@ -126,7 +132,7 @@ if (chat_localized) {
 	}
     }
     
-    function sendChat(pid, message, name, vip, sounds, type)
+    function sendChat(pid, message, name, vip, sounds, type, ring)
     {
 	message = base64_encode(jQuery.trim(message));
 	name = base64_encode(jQuery.trim(name));
@@ -146,7 +152,7 @@ if (chat_localized) {
 				     },
 		       dataType: "json",
 		       success: function(data){
-			    updateChat(sounds);
+			    updateChat(sounds, ring);
 		       }
 		    });
     }
@@ -213,6 +219,11 @@ if (chat_localized) {
 			pingSound = soundManager.createSound({
 			    id: 'ping',
 			    url: chat_localized.plugin_url + '/audio/ping.mp3',
+			    volume: 100
+			});
+			ringSound = soundManager.createSound({
+			    id: 'ring',
+			    url: chat_localized.plugin_url + '/audio/ring.mp3',
 			    volume: 100
 			});
 		    };
@@ -305,18 +316,6 @@ if (chat_localized) {
 		        $(this).attr("disabled", "disabled");
 		        $(this).val(chat_localized.please_wait);		        
 		    });
-		    
-		    /*$('#ring-users').click(function(e) {
-		    	
-		    	
-		    	//pingSound.play('notify').delay(2000);
-		    	//this.delay(2000);
-		    	
-		    });*/
-		    
-		    
-			
-			
 			
 		    $('.chat-archive').click(function(e) {
 			chat.archive($(this).closest('form').find('.chat-post-id').val());
@@ -525,7 +524,7 @@ function ringUsers() {
 			    
 			    if (length <= maxLength + 1) {
 				cid = jQuery('#chat-send-1').closest('form').find('.chat-post-id').val();
-			    chat.send(cid, " is ringing!", chat_localized['name_'+cid], vip, chat_localized['sound_'+cid], chat_localized['type_'+cid]);
+			    chat.send(cid, " is ringing!", chat_localized['name_'+cid], vip, chat_localized['sound_'+cid], chat_localized['type_'+cid], true);
 				jQuery('#chat-send-1').val("");
 			    } else {
 			        jQuery('#chat-send-1').val(text.substring(0, maxLength));
