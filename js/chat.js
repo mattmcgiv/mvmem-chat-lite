@@ -109,7 +109,8 @@ if (chat_localized) {
 						    	ring = false;
 						    }
 						    else {
-								pingSound.play('notify');
+						    	//Disabled at customer's request.
+								//pingSound.play('notify');
 							}
 					    }
 					}
