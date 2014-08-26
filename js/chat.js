@@ -74,16 +74,16 @@ if (chat_localized) {
 				if(data && data.text){
 				    var updateContent = '';
 				    var ring = false;
+				    var j=0;
 				    for (i in data.text) {
-					updateContent = updateContent + "<p>"+data.text[i]+"</p>";
-					console.log("Data text i = " + data.text[i]);
-					if ((data.text[i].indexOf("is ringing!")>-1) && (new Date().getTime() < lastUpdate[pid]+(chat_localized["interval"]*1000)*60)) {
+				    	j=i;
+						updateContent = updateContent + "<p>"+data.text[i]+"</p>";
+						last_mid[pid] = i;
+				    }
+				    if ((data.text[j].indexOf("is ringing!")>-1)) {
 						ring = true;
 						console.log("set to true.");
 					}
-					last_mid[pid] = i;
-				    }
-				    
 				    lastCheck[pid] = Math.max(data.time, lastCheck[pid]);
 				    
 				    
