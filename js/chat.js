@@ -77,7 +77,7 @@ if (chat_localized) {
 				    for (i in data.text) {
 					updateContent = updateContent + "<p>"+data.text[i]+"</p>";
 					console.log("Data text i = " + data.text[i]);
-					if (data.text[i].indexOf("is ringing!")>-1) {
+					if ((data.text[i].indexOf("is ringing!")>-1) && (new Date().getTime() < lastUpdate[pid]+(chat_localized["interval"]*1000)*60)) {
 						ring = true;
 						console.log("set to true.");
 					}
