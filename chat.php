@@ -2009,7 +2009,7 @@ if ( ! class_exists( 'Chat' ) ) {
 			if ( $chat_localized[ 'type_' . $a['id'] ] ) {
 				$chat_localized[ 'name_' . $a['id'] ] = $this->get_user_name( preg_split( '/,/', $a['login_options'] ) );
 				
-				$content .= '<div class="chat-note" style="text-align: center;"><button class="button" id="ring-users" href="javascript:void(0)" onclick="ringUsers();" style="margin: 0px auto;"> Click here to ring users.</button></div>';
+				$content .= '<div class="chat-note" style="text-align: center;"><button class="button" id="ring-users" href="javascript:void(0)" onclick="ringUsers();" style="margin: 0px auto;"> Ring Users</button></div>';
 				$content .= '<div class="chat-note" id="online-users"><strong>';
 				$content .= 'Online ' . get_users_browsing_site();
 				$content .= '</strong></div>';
