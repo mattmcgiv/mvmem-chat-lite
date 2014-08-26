@@ -1882,7 +1882,8 @@ if ( ! class_exists( 'Chat' ) ) {
 						) ) ),
 			);
 
-			if ( $this->get_option( 'site', 'enabled', 'site' ) == 'enabled' ) {
+			$excluded_pages = array('http://mvmem.com/contact','http://mvmem.com','http://mvmem.com/login');
+			if (($this->get_option('site', 'enabled', 'site') == 'enabled') && (!in_array(get_permalink(), $excluded_pages))) {
 				$width = $this->get_option( 'width', '', 'site' );
 				if ( ! empty( $width ) ) {
 					$width_str   = 'width: ' . $width;
