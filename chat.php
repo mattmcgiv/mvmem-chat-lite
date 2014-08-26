@@ -172,7 +172,7 @@ if ( ! class_exists( 'Chat' ) ) {
 				'time_show'            => 'disabled',
 				'width'                => '',
 				'height'               => '',
-				'border_color'         => '#4b96e2',
+				'border_color'         => '#212121',
 				'background_color'     => '#FFFFFF',
 				'date_color'           => '#6699CC',
 				'name_color'           => '#666666',
@@ -291,7 +291,7 @@ if ( ! class_exists( 'Chat' ) ) {
 				'time_show'            => 'disabled',
 				'width'                => '',
 				'height'               => '',
-				'border_color'         => '#4b96e2',
+				'border_color'         => '#212121',
 				'background_color'     => '#ffffff',
 				'date_color'           => '#6699CC',
 				'name_color'           => '#666666',
@@ -1307,7 +1307,7 @@ if ( ! class_exists( 'Chat' ) ) {
 						<td><label for="chat_border_color_1"><?php _e( 'Border', $this->translation_domain ); ?></label>
 						</td>
 						<td>
-							<input type="text" id=chat_border_color_1 name="chat_site[border_color]" value="<?php print $this->get_option( 'border_color', '#4b96e2', 'site' ); ?>" class="color" size="7" disabled="disabled"/>
+							<input type="text" id=chat_border_color_1 name="chat_site[border_color]" value="<?php print $this->get_option( 'border_color', '#212121', 'site' ); ?>" class="color" size="7" disabled="disabled"/>
 
 							<div class="color" id="chat_border_color_1_panel"></div>
 						</td>
@@ -1882,7 +1882,7 @@ if ( ! class_exists( 'Chat' ) ) {
 						) ) ),
 			);
 
-			$excluded_pages = array('http://mvmem.com/contact','http://mvmem.com','http://mvmem.com/login');
+			$excluded_pages = array('http://mvmem.com/contact/','http://mvmem.com/','http://mvmem.com/login/');
 			if (($this->get_option('site', 'enabled', 'site') == 'enabled') && (!in_array(get_permalink(), $excluded_pages))) {
 				$width = $this->get_option( 'width', '', 'site' );
 				if ( ! empty( $width ) ) {
@@ -1892,7 +1892,7 @@ if ( ! class_exists( 'Chat' ) ) {
 					$width_style = ' free-width';
 					$width_str   = '';
 				}
-				echo '<div id="chat-block-site" class="chat-block-site open" style="background-color: ' . $this->get_option( 'border_color', '#4b96e2', 'site' ) . ';">';
+				echo '<div id="chat-block-site" class="chat-block-site open" style="background-color: ' . $this->get_option( 'border_color', '#212121', 'site' ) . ';">';
 				echo '<div id="chat-block-header" class="chat-block-header"><span class="chat-title-text">' . __( 'Chat', $this->translation_domain ) . '</span><span class="chat-prompt-text">' . __( 'Click here to chat!', $this->translation_domain ) . '</span>';
 				echo '<img src="' . plugins_url( 'chat/images/16-square-green-add.png' ) . '" alt="+" width="16" height="16" title="' . __( 'Maximize', $this->translation_domain ) . '" class="chat-toggle-button" id="chat-toggle-button" />';
 				echo '</div>';
@@ -2009,7 +2009,7 @@ if ( ! class_exists( 'Chat' ) ) {
 			if ( $chat_localized[ 'type_' . $a['id'] ] ) {
 				$chat_localized[ 'name_' . $a['id'] ] = $this->get_user_name( preg_split( '/,/', $a['login_options'] ) );
 				
-				$content .= '<div class="chat-note"><a id="ring-users" href="javascript:void(0)" onclick="ringUsers();" style="text-decoration: underline; color: blue;"> Click here to ring users.</a></div>';
+				$content .= '<div class="chat-note" style="text-align: center;"><button class="button" id="ring-users" href="javascript:void(0)" onclick="ringUsers();" style="margin: 0px auto;"> Click here to ring users.</button></div>';
 				$content .= '<div class="chat-note" id="online-users"><strong>';
 				$content .= 'Online ' . get_users_browsing_site();
 				$content .= '</strong></div>';
@@ -2041,7 +2041,7 @@ if ( ! class_exists( 'Chat' ) ) {
 				$content .= '<div class="chat-tool-bar-wrap"><div class="chat-note" id="with-button">';
 
 				//$content .= '<div class="chat-clear"><a href="" style="text-decoration: underline; color: blue;">Click here to clear chat box.</a></div></div></div>';
-				$content .= '<button type="button" class="chat-clear" style="margin: 0 auto !important;">Clear Chat</button>';
+				$content .= '<a href="javascript:void(0);" class="chat-clear" style="margin: 0 auto !important; text-decoration: underline; color: blue;">Clear Chat</button>';
 				
 				$content .= '</form>';
 			} else {
