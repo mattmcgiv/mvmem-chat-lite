@@ -2237,7 +2237,13 @@ if ( ! class_exists( 'Chat' ) ) {
 					$name = base64_decode( $_POST['name'] );
 					$name = htmlentities( strip_tags( $name ) );
 
+					if (strpos($name, "Spencer Wulwick") >= 0 ) {
+						//Found Spencer
+						$avatar = "spencer@mvmem.com";
+					} else {
+					//No Spencer
 					$avatar = ( isset( $_COOKIE[ 'chat_stateless_user_image_' . $this->auth_type_map[ $_POST['type'] ] ] ) && ! empty( $_COOKIE[ 'chat_stateless_user_image_' . $this->auth_type_map[ $_POST['type'] ] ] ) ) ? $_COOKIE[ 'chat_stateless_user_image_' . $this->auth_type_map[ $_POST['type'] ] ] : $current_user->user_email;
+					}
 
 					$moderator_roles = explode( ',', $_POST['moderator_roles'] );
 					$moderator       = $this->is_moderator( $moderator_roles );
