@@ -320,7 +320,7 @@ if (chat_localized) {
 		        $(this).val(chat_localized.please_wait);
 		        
 		    //Update chat window with information about chat
-			chat.send(cid, 'Welcome to our new "chat" feature . If you would like to try it, please click "Ring Users" and if I\'m available, I will respond. Enjoy your visit! ', "Spencer Wulwick", vip, chat_localized['sound_'+cid], chat_localized['type_'+cid]);
+			window.setTimeout(chat.send(cid, 'Welcome to our new "chat" feature . If you would like to try it, please click "Ring Users" and if I\'m available, I will respond. Enjoy your visit! ', "Spencer Wulwick", vip, chat_localized['sound_'+cid], chat_localized['type_'+cid]), 4000);
 			
 		    });
 		    

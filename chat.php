@@ -1616,9 +1616,9 @@ if ( ! class_exists( 'Chat' ) ) {
 			$chat_localized["please_wait"]            = __( 'Please wait...', $this->translation_domain );
 
 			$chat_localized["minimize"]        = __( 'Minimize', $this->translation_domain );
-			$chat_localized["minimize_button"] = plugins_url( 'chat/images/16-square-blue-remove.png' );
+			$chat_localized["minimize_button"] = plugins_url( 'chat/images/down_arrow.png' );
 			$chat_localized["maximize"]        = __( 'Maximize', $this->translation_domain );
-			$chat_localized["maximize_button"] = plugins_url( 'chat/images/16-square-green-add.png' );
+			$chat_localized["maximize_button"] = plugins_url( 'chat/images/up_arrow.png' );
 
 			$chat_localized["interval"] = $this->get_option( 'interval', 1 );
 
