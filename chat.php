@@ -2014,7 +2014,7 @@ if ( ! class_exists( 'Chat' ) ) {
 				$content .= 'Online ' . get_users_browsing_site();
 				$content .= '</strong></div>';
 				$content .= '<br>';
-				$content .= '<div class="chat-note"><p><strong>' . __( 'Message', $this->translation_domain ) . '</strong></p></div>';
+				//$content .= '<div class="chat-note"><p><strong>' . __( 'Message', $this->translation_domain ) . '</strong></p></div>';
 				$content .= '<form id="send-message-area">';
 				$content .= '<input type="hidden" name="chat-post-id" id="chat-post-id-' . $a['id'] . '" value="' . $a['id'] . '" class="chat-post-id" />';
 
