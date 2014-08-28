@@ -313,12 +313,15 @@ if (chat_localized) {
 		    $('.chat-clear').click(function(e) {
 		    
 		    cid = $(this).closest('form').find('.chat-post-id').val();
-			//Update chat window with information about chat
-			chat.send(cid, 'Welcome to our new "chat" feature . If you would like to try it, please click "Ring Users" and if I\'m available, I will respond. Enjoy your visit! ', "Spencer Wulwick", vip, chat_localized['sound_'+cid], chat_localized['type_'+cid]);
+			
 		    		    
 			chat.clear($(this).closest('form').find('.chat-post-id').val());
 		        $(this).attr("disabled", "disabled");
-		        $(this).val(chat_localized.please_wait);		        
+		        $(this).val(chat_localized.please_wait);
+		        
+		    //Update chat window with information about chat
+			chat.send(cid, 'Welcome to our new "chat" feature . If you would like to try it, please click "Ring Users" and if I\'m available, I will respond. Enjoy your visit! ', "Spencer Wulwick", vip, chat_localized['sound_'+cid], chat_localized['type_'+cid]);
+			
 		    });
 		    
 		    $('.chat-archive').click(function(e) {
