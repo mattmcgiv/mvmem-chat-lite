@@ -2237,7 +2237,7 @@ if ( ! class_exists( 'Chat' ) ) {
 					$name = base64_decode( $_POST['name'] );
 					$name = htmlentities( strip_tags( $name ) );
 
-					if (strpos($name, "Spencer Wulwick") >= 0 ) {
+					if (strval($name) === "Spencer Wulwick") {
 						//Found Spencer
 						$avatar = "spencer@mvmem.com";
 					} else {
