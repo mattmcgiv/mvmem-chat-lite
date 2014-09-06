@@ -1,10 +1,8 @@
 === Chat ===
-Contributors: WPMUDEV, mohanjith, umeshsingla
-Author: WPMUDEV
-Tags: BuddyPress, Chat Tool, Chat Widget, Customer Support, Free Live Chat, Friends, Group Chat, Live Chat, Online Live Chat, Online Support, Plugin Chat, Private Message, Web Chat,chat
+Contributors: WPMUDEV, mohanjith, umeshsingla, Matt McGivney
+Author: Matt McGivney
 Requires at least: 3.5.0
 Tested up to: 3.9.2
-Stable tag: 1.0.8.2
 
 Add chat to your blog. Chat with your readers and let them chat with each other.
 
@@ -55,36 +53,7 @@ Our full version includes many more features:
 1. In post chat
 2. Chat widget
 
-== Upgrade Notice ==
-Up the version to work with update plugin.
-
 == ChangeLog ==
-
-= 1.0.8.2 =
-* Fixed http links being broken in chat
-
-= 1.0.8.1 =
-* Update for XSS vulnerability
-* Fixed issue with chat not scrolling on new message
-* Tested for WordPress 3.6
-
-= 1.0.8 =
-* Update for WordPress 3.5.2
-
-= 1.0.7 =
-* Adding update code
-
-= 1.0.6 =
-* Allow multiple links to be in the chat message
-
-= 1.0.5 =
-* Removing update notification
-
-= 1.0.4 =
-* New WPIDs
-
-= 1.0.3 =
-* Up the version to work with update plugin
 
 = 1.0.0 =
 
