@@ -219,6 +219,12 @@ if (chat_localized) {
     
     (function($) {
 	    $(document).ready(function() {
+			$('#chat-block-site').removeClass('closed');
+		    $('#chat-toggle-button').attr('alt', '-');
+		    $('#chat-toggle-button').attr('src', chat_localized.minimize_button);
+		    $('#chat-toggle-button').attr('title', chat_localized.minimize);
+		    $.cookie('chat_site_wide_state_104', 'open', { expires: 7, path: '/'});
+
 		    // Sound manager
 		    soundManager.url = chat_localized.plugin_url + 'swf/';
 		    soundManager.onload = function() {
