@@ -339,7 +339,7 @@ if (chat_localized) {
 			$('#chat-send-'+cid).val($('#chat-send-'+cid).val()+' '+$(this).attr('alt')).focus();
 		    });
 		    
-		    $('#chat-block-header').click(function(e) {
+		    $('#chat-toggle-button').click(function(e) {
 			    if ($('#chat-toggle-button').attr('alt') == '-') {
 			    	console.log("Closing.");
 				    $('#chat-block-site').addClass('closed');
