@@ -1894,7 +1894,7 @@ if ( ! class_exists( 'Chat' ) ) {
 				}
 				echo '<div id="chat-block-site" class="chat-block-site open" style="background-color: ' . $this->get_option( 'border_color', '#212121', 'site' ) . ';">';
 				echo '<div id="chat-block-header" class="chat-block-header"><span class="chat-title-text">' . __( 'Chat', $this->translation_domain ) . '</span><span class="chat-prompt-text">' . __( 'Click here to chat!', $this->translation_domain ) . '</span>';
-				echo '<img src="' . plugins_url( 'mvmem-chat/images/down_arrow.png' ) . '" alt="+" width="16" height="16" title="' . __( 'Maximize', $this->translation_domain ) . '" class="chat-toggle-button" id="chat-toggle-button" />';
+				echo '<img src="' . plugins_url( 'mvmem-chat/images/down_arrow.png' ) . '" alt="+" width="16" height="16" title="' . __( 'Minimize', $this->translation_domain ) . '" class="chat-toggle-button" id="chat-toggle-button" />';
 				echo '</div>';
 				echo '<div id="chat-block-inner" style="background: ' . $this->get_option( 'background_color', '#ffffff', 'site' ) . ';">' . $this->process_shortcode( $atts ) . '</div>';
 				echo '</div>';
