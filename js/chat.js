@@ -334,12 +334,12 @@ if (chat_localized) {
 		    $('.chat-clear').attr("disabled", false);
 		    $('.chat-archive').attr("disabled", false);
 		    
-		    $('div.chat-emoticons-list img').click(function() {
+		    $('div.chat-emoticons-list img').click(function(e) {
 			cid = $(this).closest('div').attr('id').replace(/chat\-emoticons\-list\-/, '');
 			$('#chat-send-'+cid).val($('#chat-send-'+cid).val()+' '+$(this).attr('alt')).focus();
 		    });
 		    
-		    $('#chat-block-header').click(function() {
+		    $('#chat-block-header').click(function(e) {
 			    if ($('#chat-toggle-button').attr('alt') == '-') {
 				    $('#chat-block-site').addClass('closed');
 				    $('#chat-toggle-button').attr('alt', '+');
