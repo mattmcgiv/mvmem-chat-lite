@@ -341,6 +341,7 @@ if (chat_localized) {
 		    
 		    $('#chat-block-header').click(function(e) {
 			    if ($('#chat-toggle-button').attr('alt') == '-') {
+			    	console.log("Closing.");
 				    $('#chat-block-site').addClass('closed');
 				    $('#chat-toggle-button').attr('alt', '+');
 				    $('#chat-toggle-button').attr('src', chat_localized.maximize_button);
@@ -348,6 +349,7 @@ if (chat_localized) {
 				    $.cookie('chat_site_wide_state_104', 'closed', { expires: 7, path: '/'});
 				    
 			    } else {
+			    	console.log("Opening.");
 				    $('#chat-block-site').removeClass('closed');
 				    $('#chat-toggle-button').attr('alt', '-');
 				    $('#chat-toggle-button').attr('src', chat_localized.minimize_button);
