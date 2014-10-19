@@ -27,7 +27,7 @@ if ( ! class_exists( 'Chat' ) ) {
 		 *
 		 * @var        string $chat_current_version Current version
 		 */
-		var $chat_current_version = '1.0.8.2';
+		var $chat_current_version = '.1';
 
 		/**
 		 * @var        string $translation_domain Translation domain
@@ -172,7 +172,7 @@ if ( ! class_exists( 'Chat' ) ) {
 				'time_show'            => 'disabled',
 				'width'                => '',
 				'height'               => '',
-				'border_color'         => '#4b96e2',
+				'border_color'         => '#212121',
 				'background_color'     => '#FFFFFF',
 				'date_color'           => '#6699CC',
 				'name_color'           => '#666666',
@@ -291,7 +291,7 @@ if ( ! class_exists( 'Chat' ) ) {
 				'time_show'            => 'disabled',
 				'width'                => '',
 				'height'               => '',
-				'border_color'         => '#4b96e2',
+				'border_color'         => '#212121',
 				'background_color'     => '#ffffff',
 				'date_color'           => '#6699CC',
 				'name_color'           => '#666666',
@@ -355,25 +355,25 @@ if ( ! class_exists( 'Chat' ) ) {
 				load_plugin_textdomain( $this->translation_domain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 			}
 
-			wp_register_script( 'chat_soundmanager', plugins_url( 'chat/js/soundmanager2-nodebug-jsmin.js' ), array(), $this->chat_current_version );
-			wp_register_script( 'jquery-cookie', plugins_url( 'chat/js/jquery-cookie.js' ), array( 'jquery' ) );
-			// wp_register_script('jquery-blockUI', plugins_url('chat/js/jquery.blockUI.js'), array('jquery'));
-			wp_register_script( 'chat_js', plugins_url( 'chat/js/chat.js' ), array(
+			wp_register_script( 'chat_soundmanager', plugins_url( 'mvmem-chat/js/soundmanager2-nodebug-jsmin.js' ), array(), $this->chat_current_version );
+			wp_register_script( 'jquery-cookie', plugins_url( 'mvmem-chat/js/jquery-cookie.js' ), array( 'jquery' ) );
+			// wp_register_script('jquery-blockUI', plugins_url('mvmem-chat/js/jquery.blockUI.js'), array('jquery'));
+			wp_register_script( 'chat_js', plugins_url( 'mvmem-chat/js/chat.js' ), array(
 					'jquery',
 					'jquery-cookie',
 					'chat_soundmanager'
 				), $this->chat_current_version, true );
 
 			if ( is_admin() ) {
-				wp_register_script( 'farbtastic', plugins_url( 'chat/js/farbtastic.js' ), array( 'jquery' ) );
-				wp_register_script( 'chat_admin_js', plugins_url( 'chat/js/chat-admin.js' ), array(
+				wp_register_script( 'farbtastic', plugins_url( 'mvmem-chat/js/farbtastic.js' ), array( 'jquery' ) );
+				wp_register_script( 'chat_admin_js', plugins_url( 'mvmem-chat/js/chat-admin.js' ), array(
 						'jquery',
 						'jquery-cookie',
 						'jquery-ui-core',
 						'jquery-ui-tabs',
 						'farbtastic'
 					), $this->chat_current_version, true );
-				wp_register_style( 'chat_admin_css', plugins_url( 'chat/css/wp_admin.css' ) );
+				wp_register_style( 'chat_admin_css', plugins_url( 'mvmem-chat/css/wp_admin.css' ) );
 			}
 
 			if ( ( current_user_can( 'edit_posts' ) || current_user_can( 'edit_pages' ) ) && get_user_option( 'rich_editing' ) == 'true' ) {
@@ -1307,7 +1307,7 @@ if ( ! class_exists( 'Chat' ) ) {
 						<td><label for="chat_border_color_1"><?php _e( 'Border', $this->translation_domain ); ?></label>
 						</td>
 						<td>
-							<input type="text" id=chat_border_color_1 name="chat_site[border_color]" value="<?php print $this->get_option( 'border_color', '#4b96e2', 'site' ); ?>" class="color" size="7" disabled="disabled"/>
+							<input type="text" id=chat_border_color_1 name="chat_site[border_color]" value="<?php print $this->get_option( 'border_color', '#212121', 'site' ); ?>" class="color" size="7" disabled="disabled"/>
 
 							<div class="color" id="chat_border_color_1_panel"></div>
 						</td>
@@ -1610,15 +1610,15 @@ if ( ! class_exists( 'Chat' ) ) {
 			}
 
 			$chat_localized["url"]                    = site_url() . "/wp-admin/admin-ajax.php";
-			$chat_localized["plugin_url"]             = plugins_url( "chat/" );
+			$chat_localized["plugin_url"]             = plugins_url( "mvmem-chat/" );
 			$chat_localized["facebook_text_sign_out"] = __( 'Sign out of Facebook', $this->translation_domain );
 			$chat_localized["twitter_text_sign_out"]  = __( 'Sign out of Twitter', $this->translation_domain );
 			$chat_localized["please_wait"]            = __( 'Please wait...', $this->translation_domain );
 
 			$chat_localized["minimize"]        = __( 'Minimize', $this->translation_domain );
-			$chat_localized["minimize_button"] = plugins_url( 'chat/images/16-square-blue-remove.png' );
+			$chat_localized["minimize_button"] = plugins_url( 'mvmem-chat/images/down_arrow.png' );
 			$chat_localized["maximize"]        = __( 'Maximize', $this->translation_domain );
-			$chat_localized["maximize_button"] = plugins_url( 'chat/images/16-square-green-add.png' );
+			$chat_localized["maximize_button"] = plugins_url( 'mvmem-chat/images/up_arrow.png' );
 
 			$chat_localized["interval"] = $this->get_option( 'interval', 1 );
 
@@ -1760,7 +1760,7 @@ if ( ! class_exists( 'Chat' ) ) {
 		 * Output CSS
 		 */
 		function output_css() {
-			echo '<link rel="stylesheet" href="' . plugins_url( 'chat/css/style.css' ) . '" type="text/css" />';
+			echo '<link rel="stylesheet" href="' . plugins_url( 'mvmem-chat/css/style.css' ) . '" type="text/css" />';
 		}
 
 		/**
@@ -1882,7 +1882,8 @@ if ( ! class_exists( 'Chat' ) ) {
 						) ) ),
 			);
 
-			if ( $this->get_option( 'site', 'enabled', 'site' ) == 'enabled' ) {
+			$excluded_pages = array('http://mvmem.com/contact/','http://mvmem.com/','http://mvmem.com/login/');
+			if (($this->get_option('site', 'enabled', 'site') == 'enabled') && (!in_array(get_permalink(), $excluded_pages))) {
 				$width = $this->get_option( 'width', '', 'site' );
 				if ( ! empty( $width ) ) {
 					$width_str   = 'width: ' . $width;
@@ -1891,9 +1892,9 @@ if ( ! class_exists( 'Chat' ) ) {
 					$width_style = ' free-width';
 					$width_str   = '';
 				}
-				echo '<div id="chat-block-site" class="chat-block-site open" style="background-color: ' . $this->get_option( 'border_color', '#4b96e2', 'site' ) . ';">';
+				echo '<div id="chat-block-site" class="chat-block-site open" style="background-color: ' . $this->get_option( 'border_color', '#212121', 'site' ) . ';">';
 				echo '<div id="chat-block-header" class="chat-block-header"><span class="chat-title-text">' . __( 'Chat', $this->translation_domain ) . '</span><span class="chat-prompt-text">' . __( 'Click here to chat!', $this->translation_domain ) . '</span>';
-				echo '<img src="' . plugins_url( 'chat/images/16-square-green-add.png' ) . '" alt="+" width="16" height="16" title="' . __( 'Maximize', $this->translation_domain ) . '" class="chat-toggle-button" id="chat-toggle-button" />';
+				echo '<img src="' . plugins_url( 'mvmem-chat/images/down_arrow.png' ) . '" alt="+" width="16" height="16" title="' . __( 'Maximize', $this->translation_domain ) . '" class="chat-toggle-button" id="chat-toggle-button" />';
 				echo '</div>';
 				echo '<div id="chat-block-inner" style="background: ' . $this->get_option( 'background_color', '#ffffff', 'site' ) . ';">' . $this->process_shortcode( $atts ) . '</div>';
 				echo '</div>';
@@ -2008,12 +2009,12 @@ if ( ! class_exists( 'Chat' ) ) {
 			if ( $chat_localized[ 'type_' . $a['id'] ] ) {
 				$chat_localized[ 'name_' . $a['id'] ] = $this->get_user_name( preg_split( '/,/', $a['login_options'] ) );
 				
-				$content .= '<div class="chat-note"><a id="ring-users" href="javascript:void(0)" onclick="ringUsers();" style="text-decoration: underline; color: blue;"> Click here to ring users.</a></div>';
+				$content .= '<div class="chat-note" style="text-align: center;"><button class="button" id="ring-users" href="javascript:void(0)" onclick="ringUsers();" style="margin: 0px auto;"> Ring Users</button></div>';
 				$content .= '<div class="chat-note" id="online-users"><strong>';
 				$content .= 'Online ' . get_users_browsing_site();
 				$content .= '</strong></div>';
 				$content .= '<br>';
-				$content .= '<div class="chat-note"><p><strong>' . __( 'Message', $this->translation_domain ) . '</strong></p></div>';
+				//$content .= '<div class="chat-note"><p><strong>' . __( 'Message', $this->translation_domain ) . '</strong></p></div>';
 				$content .= '<form id="send-message-area">';
 				$content .= '<input type="hidden" name="chat-post-id" id="chat-post-id-' . $a['id'] . '" value="' . $a['id'] . '" class="chat-post-id" />';
 
@@ -2031,7 +2032,7 @@ if ( ! class_exists( 'Chat' ) ) {
 
 				$content .= '<div id="chat-send-wrap">';
 				$content .= '<div class="chat-clear"></div>';
-				$content .= '<div class="chat-send-wrap"><textarea id="chat-send-' . $a['id'] . '" class="chat-send" placeholder="Type here. Press Enter to send."></textarea></div>';
+				$content .= '<div class="chat-send-wrap"><textarea id="chat-send-' . $a['id'] . '" class="chat-send" placeholder="Type here & PRESS ENTER – on your Keyboard – to send your message."></textarea></div>';
 				//$content .= '<div class="chat-note">' . __( '"Enter" to send', $this->translation_domain ) . '. ' . __( 'Place code in between code tags', $this->translation_domain ) . '.</div>';
 				if ( $this->authenticate( preg_split( '/,/', $a['login_options'] ) ) > 2 ) {
 					$content .= '<div class="chat-note"><input type="button" value="' . __( 'Logout', $this->translation_domain ) . '" name="chat-logout-submit" class="chat-logout-submit" id="chat-logout-submit-' . $a['id'] . '" /></div>';
@@ -2040,7 +2041,7 @@ if ( ! class_exists( 'Chat' ) ) {
 				$content .= '<div class="chat-tool-bar-wrap"><div class="chat-note" id="with-button">';
 
 				//$content .= '<div class="chat-clear"><a href="" style="text-decoration: underline; color: blue;">Click here to clear chat box.</a></div></div></div>';
-				$content .= '<button type="button" class="chat-clear" style="margin: 0 auto !important;">Clear Chat</button>';
+				$content .= '<a href="javascript:void(0);" class="chat-clear" style="margin: 0 auto !important; text-decoration: underline; color: blue;">Clear Chat</button>';
 				
 				$content .= '</form>';
 			} else {
@@ -2125,7 +2126,7 @@ if ( ! class_exists( 'Chat' ) ) {
 		 * @see        http://codex.wordpress.org/TinyMCE_Custom_Buttons
 		 */
 		function tinymce_load_langs( $langs ) {
-			$langs["chat"] = plugins_url( 'chat/tinymce/langs/langs.php' );
+			$langs["chat"] = plugins_url( 'mvmem-chat/tinymce/langs/langs.php' );
 
 			return $langs;
 		}
@@ -2134,7 +2135,7 @@ if ( ! class_exists( 'Chat' ) ) {
 		 * @see        http://codex.wordpress.org/TinyMCE_Custom_Buttons
 		 */
 		function tinymce_add_plugin( $plugin_array ) {
-			$plugin_array['chat'] = plugins_url( 'chat/tinymce/editor_plugin.js' );
+			$plugin_array['chat'] = plugins_url( 'mvmem-chat/tinymce/editor_plugin.js' );
 
 			return $plugin_array;
 		}
@@ -2236,7 +2237,13 @@ if ( ! class_exists( 'Chat' ) ) {
 					$name = base64_decode( $_POST['name'] );
 					$name = htmlentities( strip_tags( $name ) );
 
+					if (strval($name) === "Spencer Wulwick") {
+						//Found Spencer
+						$avatar = "spencer@mvmem.com";
+					} else {
+					//No Spencer
 					$avatar = ( isset( $_COOKIE[ 'chat_stateless_user_image_' . $this->auth_type_map[ $_POST['type'] ] ] ) && ! empty( $_COOKIE[ 'chat_stateless_user_image_' . $this->auth_type_map[ $_POST['type'] ] ] ) ) ? $_COOKIE[ 'chat_stateless_user_image_' . $this->auth_type_map[ $_POST['type'] ] ] : $current_user->user_email;
+					}
 
 					$moderator_roles = explode( ',', $_POST['moderator_roles'] );
 					$moderator       = $this->is_moderator( $moderator_roles );

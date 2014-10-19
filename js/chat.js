@@ -37,7 +37,7 @@ if (chat_localized) {
 	this.archive = archiveChat;
     }
     
-    function updateChat(sounds, ring){
+    function updateChat(sounds){
 	if(!instanse){
 	    jQuery('.chat-post-id').each(function () {
 		var instanse = true;
@@ -73,19 +73,20 @@ if (chat_localized) {
 			    function(data){
 				if(data && data.text){
 				    var updateContent = '';
+				    var ring = false;
+				    var j=0;
 				    for (i in data.text) {
-					updateContent = updateContent + "<p>"+data.text[i]+"</p>";
-					last_mid[pid] = i;
+				    	j=i;
+						updateContent = updateContent + "<p>"+data.text[i]+"</p>";
+						last_mid[pid] = i;
 				    }
-				    
+				    if ((data.text[j].indexOf("is ringing!")>-1)) {
+						ring = true;
+						console.log("set to true.");
+					}
 				    lastCheck[pid] = Math.max(data.time, lastCheck[pid]);
 				    
-				    /*if (data.text.length > 0) {
-					jQuery('#chat-area-'+pid).animate({ scrollTop: jQuery('#chat-area-'+pid).attr("scrollHeight") }, 2000);
-				    }
-				    if ( sounds !== 'disabled' && chat_localized['sound_'+pid] !== 'disabled' && pingSound ) {
-					pingSound.play('notify');
-				    }*/
+				    
 				    
 				    if ( currentContent[pid] !== updateContent ) {
 					if ( updateContent !== '' ) {
@@ -100,15 +101,16 @@ if (chat_localized) {
 
 							jQuery('#chat-area-'+pid).animate({ scrollTop: c_scrollTop }, 1000);
 						}
-					    //jQuery('#chat-area-'+pid).animate({ scrollTop: jQuery('#chat-area-'+pid).attr("scrollHeight") }, 2000);
-					
+					   
 					    if ( sounds !== 'disabled' && chat_localized['sound_'+pid] !== 'disabled' && pingSound ) {
-						
-							if (ring) {
-								ringSound.play('notify');
-							}
-							else {
-								pingSound.play('notify');
+						    //if text contains "is ringing!"
+						    if (ring) {
+						    	ringSound.play('notify'); //then play the ring
+						    	ring = false;
+						    }
+						    else {
+						    	//Disabled at customer's request.
+								//pingSound.play('notify');
 							}
 					    }
 					}
@@ -132,7 +134,7 @@ if (chat_localized) {
 	}
     }
     
-    function sendChat(pid, message, name, vip, sounds, type, ring)
+    function sendChat(pid, message, name, vip, sounds, type)
     {
 	message = base64_encode(jQuery.trim(message));
 	name = base64_encode(jQuery.trim(name));
@@ -152,7 +154,7 @@ if (chat_localized) {
 				     },
 		       dataType: "json",
 		       success: function(data){
-			    updateChat(sounds, ring);
+			    updateChat(sounds);
 		       }
 		    });
     }
@@ -172,6 +174,10 @@ if (chat_localized) {
 		       dataType: "json",
 		       success: function(data){
 					    window.location.reload();
+					    //Update chat window with information about chat
+			var timeoutID;
+			timeoutID = window.setTimeout(chat.send(cid, 'Welcome to our new "chat" feature . If you would like to try it, please click "Ring Users" and if I\'m available, I will respond. Enjoy your visit! ', "Spencer Wulwick", vip, chat_localized['sound_'+cid], chat_localized['type_'+cid]),2000);
+			
 		       }
 		    });
     }
@@ -216,16 +222,16 @@ if (chat_localized) {
 		    // Sound manager
 		    soundManager.url = chat_localized.plugin_url + 'swf/';
 		    soundManager.onload = function() {
-			pingSound = soundManager.createSound({
-			    id: 'ping',
-			    url: chat_localized.plugin_url + '/audio/ping.mp3',
-			    volume: 100
-			});
-			ringSound = soundManager.createSound({
-			    id: 'ring',
-			    url: chat_localized.plugin_url + '/audio/ring.mp3',
-			    volume: 100
-			});
+				pingSound = soundManager.createSound({
+				    id: 'ping',
+				    url: chat_localized.plugin_url + '/audio/ping.mp3',
+				    volume: 100
+				});
+				ringSound = soundManager.createSound({
+				    id: 'ring',
+				    url: chat_localized.plugin_url + '/audio/ring.mp3',
+				    volume: 100
+				});
 		    };
 		    
 		    if (!$('#chat-block-site').hasClass('closed') && $('#chat-box-1').height() > $(window).height()) {
@@ -300,6 +306,7 @@ if (chat_localized) {
 			    if (length <= maxLength + 1) {
 				cid = $(this).closest('form').find('.chat-post-id').val();
 			        chat.send(cid, text, chat_localized['name_'+cid], vip, chat_localized['sound_'+cid], chat_localized['type_'+cid]);
+			        //chat.send(cid, text, chat_localized['name_'+cid], vip, chat_localized['sound_'+cid], chat_localized['type_'+cid]);
 				$(this).val("");
 			    } else {
 			        $(this).val(text.substring(0, maxLength));
@@ -310,13 +317,14 @@ if (chat_localized) {
 		    $('.chat-clear').click(function(e) {
 		    
 		    cid = $(this).closest('form').find('.chat-post-id').val();
-			chat.send(cid, " cleared the chat window.", chat_localized['name_'+cid], vip, chat_localized['sound_'+cid], chat_localized['type_'+cid]);
+			
 		    		    
 			chat.clear($(this).closest('form').find('.chat-post-id').val());
 		        $(this).attr("disabled", "disabled");
-		        $(this).val(chat_localized.please_wait);		        
-		    });
+		        $(this).val(chat_localized.please_wait);
 			
+		    });
+		    
 		    $('.chat-archive').click(function(e) {
 			chat.archive($(this).closest('form').find('.chat-post-id').val());
 			$(this).attr("disabled", "disabled");
@@ -524,7 +532,7 @@ function ringUsers() {
 			    
 			    if (length <= maxLength + 1) {
 				cid = jQuery('#chat-send-1').closest('form').find('.chat-post-id').val();
-			    chat.send(cid, " is ringing!", chat_localized['name_'+cid], vip, chat_localized['sound_'+cid], chat_localized['type_'+cid], true);
+			    chat.send(cid, "is ringing!", chat_localized['name_'+cid], vip, chat_localized['sound_'+cid], chat_localized['type_'+cid]);
 				jQuery('#chat-send-1').val("");
 			    } else {
 			        jQuery('#chat-send-1').val(text.substring(0, maxLength));
